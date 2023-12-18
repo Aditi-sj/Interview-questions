@@ -1,0 +1,210 @@
+Interview questions 
+
+11. Can you explain the purpose of Stereotype annotations in the Spring Framework?
+=> the stereotype annotations in spring are @Component, @Service, @Repository, and @Controller. @Component is a class-level annotation. It is used to denote a class as a Component.
+
+12. How you can define bean in spring framework?
+=> Beans : the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans.
+==>Bean can be define by two methods:
+1)@bean
+2)@Configuration
+
+13. What is dependency injection ?
+=>Classes often require references to other classes. For example, a Car class might need a reference to an Engine class. These required classes are called dependencies, and in this example the Car class is dependent on having an instance of the Engine class to run.
+==>dependency injection is a programming technique in which an object or function receives other objects or functions that it requires, as opposed to creating them internally.
+
+14. How many ways we can perform dependency injection in spring or spring boot ?
+=>Three types of dependency injection — constructor injection, method injection, and property injection.
+
+1)Constructor injection:Dependency is passed to the object via its constructor that accepts an interface as an argument. A concrete class object is bound to the interface handle.
+2)Method Injection: A.k.a. interface-based injection. Dependency is passed to the object via a method.
+3)Property Injection: A.k.a. setter injection. If the dependency is selected and invoked at different places, we can set the dependency via a property exposed by the dependent object, which can then invoke it later.
+
+15. Where you choose to use setter injection over constructor injection and vice versa?
+	=> Mandatory DI, immuatable in nature, cannot resolve circular dependency (constructor) Optional for bean,        non-immuatable (setter)
+==>Use Setter injection when a number of dependencies are more or you need readability.
+==>Use Constructor Injection when Object must be created with all of its dependency.
+
+
+16. Can you provide real world example of @PostConstruct where its used?
+==>The PostConstruct annotation is used on a method that needs to be executed after dependency injection is done to perform any initialization. 
+
+
+17. How can we dynamically load values in Spring Boot Application? (@Value)
+=>Property values can be injected directly into your beans using the @Value annotation, accessed via Spring's Environment abstraction or bound to structured objects via @ConfigurationProperties .
+
+
+
+18. Can you explain difference between YML and properties files, in what scenario you might prefer over another
+	Syntax & Structure
+	Hierarchy
+	List/Arrays
+	Complex Data Types
+	Readability
+
+19. What is difference between yml & YAML?
+=>They are used interchangeably and refer to the same data serialization format.
+
+20. If i will configure same values in both properties then which value will be load in spring boot, who will load first properties or yaml...
+
+
+21. How to load External Properties in Spring Boot 
+-> spring.config.import="c:/nitesh/downloads/test.txt"
+
+22. How to map or bind config properties to Java Object?
+=>declare setters for each of the properties
+
+23. How will you resolve bean dependency ambiguity?
+=>Spring - Resolving ambiguity by using @Qualifier
+the configuration provides more than one implementations for a bean.
+or if we want to inject bean instances by name rather than by type.
+
+24. Can we avoid this dependency ambiguity without using @Qualifier
+=>it's a good idea to use @Qualifier to avoid ambiguity.
+
+25  What is bean scope & can you explain different type of bean scope.
+=>Bean Scopes refers to the lifecycle of Bean that means when the object of Bean will be instantiated, how long does that object live, and how many objects will be created for that bean throughout.
+=> singleton.
+prototype.
+request.
+session.
+application.
+websocket.
+
+26 How to define custom bean scope?
+=>The custom scope tells the external entity which information the connected app is authorized to access.
+Step by Step Implementation
+Step 1. Create Custom Bean Scope Class
+Step 2. Register Created Custom Bean Scope
+
+27 Can you provide real time use case for singleton & prototype scope?
+=>Singleton can be used in case external hardware resource usage limitation required e.g. Hardware printers where the print spooler can be made a singleton to avoid multiple concurrent accesses and creating deadlock.
+
+28 can we inject prototype bean in singleton bean? if yes what will happen?
+=>In this case, as the singleton bean is initialized only once per application context, we need to apply extra logic to initialize the prototype-scoped bean so that it is created every time.
+
+29 difference b/n spring singleton and plain singleton?
+=>Java singleton class is per classloader and Spring's singleton is per application context.
+
+30 what is purpose of BeanPostProcessor interface in Spring, how you can customise it using bean initialization and destruction?
+=>Spring BeanPostProcessor beans are a special kind of beans that get created before any other beans and Spring allows you to assign customize callbacks to it. Spring provides the BeanPostProcessor interface, you can implement its methods to provide your own instantiation logic and dependency resolution logic.
+
+31 Have you worked on Restful webservices? if yes what are all HTTP methods you have used in project?
+=>GET.
+PUT.
+POST.
+DELETE.
+PATCH.
+
+32 How can you specify HTTP menthod type of rest end point?
+=> In the HTTP Methods related list, click New. Select the HTTP method you want to use, such as GET or POST. Enter the Endpoint this HTTP method should access.
+
+33 What is difference between @PathVariable & @RequestParam?
+=>@RequestParam is used to capture query parameters or form parameters from the URL, while @PathVariable it is used to capture values from the URL path. 
+
+34 Why did you use @RestController not @Controller?
+=>@Controller is used to declare common web controllers which can return HTTP response but @RestController is used to create controllers for REST APIs which can return JSON.
+
+35 How we can deserialize a JSON request payload into object within Spring MVC Controller?
+=>he built-in @RequestBody annotation can automatically deserialize the JSON data encapsulated in the request body into a particular model object.
+
+36 can we perform update operations in POST http method, if yes then do we need Put mapping or put http method?
+=>The key difference between PUT and POST methods is that a PUT is restricted to create or update operations, while a POST operation may perform any type of processing.
+
+37. Can we get request body in GET HTTP method?
+Yes, technically, it's possible to include a request body in an HTTP GET request.
+
+38. How can we perform content negotation (XML/JSON) in REST Endpoint?
+=> @Produces= XML/JSON , format=xml
+
+39 What status code you have observed in your application?
+=>An HTTP status code is a server response to a browser's request
+1)The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource.
+2)202 Accepted response status code indicates that the request has been accepted for processing, but the processing has not been completed.
+3)400 Bad Request response status code indicates that the server cannot or will not process the request due to something that is perceived to be a client error.
+
+40 How can you enable cross origin? 
+=>@crossorigin("http://localhost:4200"), java based config...
+
+41 How can you upload a file in spring?
+=>Go to postman, and select body->form-data. Change the key type to file. Then upload your file.
+
+42 How do you maintain versioning for your REST API?
+=>Versioning through URI Path.
+Versioning through query parameters.
+Versioning through custom headers.
+
+43. How will you document REST API?
+1)Postman
+2)Swagger
+
+44. How can you hide certain  REST endpoints to prevent them from being exposed externally ?
+=> In API Discovery, open the more options menu next to the API you want to hide. From the menu, select Hide API.
+
+Java Interview Q&A
+1. what all collection you used in your project ?
+=>List and Hash map
+2. What is the difference between list and set ?
+=> a list supports ordered collections and allows duplicates, whereas a set emphasizes uniqueness without any specific order.
+ 
+3. What is the Difference between ArrayList and LinkedList  ?
+=>ArrayList uses an array, which allows for fast random access but slow insertion and deletion. While LinkedList uses a doubly linked list, which allows for fast insertion and deletion but slow random access. Also one of the major difference lies in the access time.
+
+4. List object creation scenario
+=>ArrayList arrayList=new ArrayList<String>();
+  List<String> list=new ArrayList<>();
+
+5. Declaring a List field with the final keyword ?
+=>declare a list use List<Type> name Change the Type to be whatever type of objects you want to store in the list like String to hold strings as shown in the code below.
+ 
+6. How Can I write Custom ArrayList where  I don't want to allow duplicate ?
+=>To prevent duplicate elements in Java ArrayList, we can follow the two methods:
+1)Utilizing the contains() method.
+2)Utilizing HashSet for Deduplication.
+
+7. Why Set doesn't allow duplicate Element ?
+=>when you add a duplicates to a set, duplicates are ignored and set remains unchanged. Internally set stores element using hashtable. Hashtable is a datastructure and it is an array of key/value pairs. Internally values passed by the set are treated as keys and keys are unique and cannot be duplicated.
+
+8. What is the difference between Comparable and Comparator ?
+=>Comparable and comparator are both interfaces in the Java programming language to determine the behaviour in which classes will be implemented. While Comparable is used on objects that are naturally ordered, the Comparator interface implements sorting by taking the attributes of an object into consideration.
+
+9. Multi Comparing using Comparator Scenario
+10. What is the difference between fail fast and fail safe iterator?
+=>Fail-Fast systems abort operation as-fast-as-possible exposing failures immediately and stopping the whole operation. Whereas, Fail-Safe systems don't abort an operation in the case of a failure. Such systems try to avoid raising failures as much as possible.
+
+A iterator which will fail fast when we do any modification while iterating a collection is called fail fast iterator Ex : (ArrayList ,HashMap and Vector)
+
+Iterator who allow us to modify in middle while iterating a collection is called Non-Fail Fast Iterator Ex: (CopyOnWriteArrayList , CopyOnWriteArraySet, ConcurrentHashMap)
+
+Example
+
+Internal Flow
+
+
+11. What is the need of ConcurrentHashMap and How it is different from HashMap ?
+=>The key difference between HashMap and ConcurrentHashMap is that HashMap is not thread-safe and non-synchronized, whereas ConcurrentHashMap is thread-safe and synchronized.
+
+12. If we have Hashtable which is already synchronized  then why we need ConcurrentHashMap  ?
+=>Hashtable achieves thread safety through method-level synchronization. ConcurrentHashMap, on the other hand, provides thread safety with a higher level of concurrency. It allows multiple threads to read and perform limited writes simultaneously without locking the entire data structure.
+
+13. We Can Synchronize a HashMap using Collections then why can't we use that instead using ConcurrentHashMap ?
+Ans : if we used Collections.synchronizedMap(map) it will act as a synchronized Hashtable only where again locking mechanism is different
+
+14. How HashMap Internally Works ?
+=> the HashMap class stores an array of Entry objects, where each Entry object represents a key-value pair. If two    or more keys map to the same index in the array, a linked list of Entry objects is created at that index to handle collisions.
+
+15. If key is null in HashMap then where that entry will store in map ?
+=>In Hashmap one null key is allowed and multiple null values are allowed. Since hashcode of null is 0 so null key actually stored at index 0 in hashmap.
+
+16. Map enhancement in java 8?
+=>To improve the working of HashMap, Java 8 made updates to the internal implementation workflow. Once a certain threshold level is reached, the values are now automatically stored in a tree manner rather than a linked list. So instead of O(n) retrieval time, we now have better O(log n) retrieval performance.
+
+17. How TreeMap internally works ?
+=>In TreeMap, the sorting of data is based on their natural ordering of keys – in ascending order for integers and alphabetical order for strings, and these sorted data are stored in a Self Balancing Binary Search Tree or Red Black Tree.
+
+
+
+
+
+
+
